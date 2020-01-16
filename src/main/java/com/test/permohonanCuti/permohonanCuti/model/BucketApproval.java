@@ -30,9 +30,6 @@ public class BucketApproval implements Serializable {
     @Column(length=100, name = "requestDate")
     private Date requestDate;
 
-    @Column(length=100, name = "user_request_name")
-    private String userRequestName;
-
     @Column(name = "created_date", updatable = false)
     @Temporal (TemporalType.TIMESTAMP)
     @CreatedDate
@@ -92,14 +89,6 @@ public class BucketApproval implements Serializable {
 
     public void setRequestDate(Date requestDate) {
         this.requestDate = requestDate;
-    }
-
-    public String getUserRequestName() {
-        return userRequestName;
-    }
-
-    public void setUserRequestName(String userRequestName) {
-        this.userRequestName = userRequestName;
     }
 
     public Date getCreatedDate() {

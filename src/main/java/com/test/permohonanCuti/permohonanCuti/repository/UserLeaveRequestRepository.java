@@ -15,10 +15,4 @@ public interface UserLeaveRequestRepository extends JpaRepository<UserLeaveReque
             "inner join BucketApproval as m on p.userLeaveRequestId = m.userLeaveRequest\n" +
             "where p.user.userId = :users")
     List<UserLeaveView> findByByUsers(Long users, Pageable pageable);
-
-//    @Query("select p.user.userId,p.leaveDateFrom,p.leaveDateTo,p.description,p.status,\n" +
-//            "m.resolverReason, m.resolvedBy, m.resolvedDate FROM UserLeaveRequest as p \n" +
-//            "inner join BucketApproval as m on p.userLeaveRequestId = m.userLeaveRequest\n" +
-//            "where p.user.userId = :users")
-//    List<UserLeaveView> findByByUsers(Long users, Pageable pageable);
 }

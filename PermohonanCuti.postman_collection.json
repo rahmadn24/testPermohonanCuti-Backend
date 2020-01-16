@@ -61,6 +61,82 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Position",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"positionName\" : \"staff\",\n\t\"level\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/position?positionName=staff",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"position"
+							],
+							"query": [
+								{
+									"key": "positionName",
+									"value": "staff"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Position",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"positionName\" : \"staff\",\n\t\"level\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/position",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"position"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -109,6 +185,41 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"userName\":\"Barasuara\",\n\t\"positionName\":\"staff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\"userId\":59,\n\t\"userName\":\"Barasuara\",\n\t\"positionName\":\"staff\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -180,6 +291,31 @@
 					"response": []
 				},
 				{
+					"name": "Delete PositionLeave",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/positionLeave?positionLeaveId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"positionLeave"
+							],
+							"query": [
+								{
+									"key": "positionLeaveId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create PositionLeave",
 					"request": {
 						"method": "POST",
@@ -194,6 +330,41 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"leaveApprove\" : 12,\n\t\"positionName\" : \"employee\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/positionLeave",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"positionLeave"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update PositionLeave",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"positionLeaveId\": 2,\n\t\"leaveApprove\" : 12,\n\t\"positionName\" : \"employee\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,9 +425,66 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get User Leave Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/requestLeave/59/1/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"requestLeave",
+								"59",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Resolve Request Leave",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bucketApprovalId\": 67,\n    \"status\": \"approved\",\n    \"resolverReason\": \"Dipersilahkan\",\n    \"resolvedBy\": \"IO\",\n    \"resolvedDate\": \"2020-01-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/resolveRequestLeave",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"resolveRequestLeave"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

@@ -101,25 +101,7 @@ public class UserLeaveRequestController {
         Pageable pageRequest = PageRequest.of(choosenPage, totalDataPerPage);
         List<Object> jsonObjectList = new ArrayList<>();
         try {
-//            User user = userServices.getDataById(userId);
             List<UserLeaveView> userList = userLeaveRequestService.getDataAllByUserId(userId, pageRequest);
-            List list = modelMapper.map(userList, (Type) UserLeaveView.class);
-//            Object obj2 = userList.get(0);
-//            ArrayList al1 = new ArrayList();
-//            al1 = (ArrayList) obj2;
-//            UserLeaveView userLeaveView = modelMapper.map(userList, UserLeaveView.class);
-//            System.out.println(userList);
-//            System.out.println(userLeaveView);
-            for (UserLeaveView dc : userList) {
-                HashMap<String, Object> data1 = new HashMap<>();
-//                System.out.println("ini db"+dc.getLeaveDateFrom());
-//                data1.put("userId", dc.getLeaveDateFrom());
-//                data1.put("leaveDateFrom", dc.);
-//                data1.put("leaveDateTo", dc.);
-//                data1.put("description", dc.);
-//                data1.put("status", dc.);
-//                jsonObjectList.add(data1);
-            }
             data.put(Constant.CONST_DATA, userList);
             data.put(Constant.CONST_STATUS, HttpStatus.OK);
         } catch (Exception e) {

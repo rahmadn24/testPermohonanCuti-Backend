@@ -36,7 +36,7 @@ public class PositionLeave implements Serializable {
     @LastModifiedDate
     private Date updateDate;
 
-    @Column(name = "last_update_by")
+    @Column(name = "update_by")
     private String updateBy;
 
     @OneToOne(fetch = FetchType.LAZY)

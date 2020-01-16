@@ -8,9 +8,9 @@ public class BucketApprovalDto {
     private String resolvedBy;
     private Date resolvedDate;
     private Date requestDate;
-    private String userRequestName;
     private String createdBy;
     private String updateBy;
+    private String status;
     private Long userLeaveRequest;
 
     public Long getBucketApprovalId() {
@@ -53,14 +53,6 @@ public class BucketApprovalDto {
         this.requestDate = requestDate;
     }
 
-    public String getUserRequestName() {
-        return userRequestName;
-    }
-
-    public void setUserRequestName(String userRequestName) {
-        this.userRequestName = userRequestName;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
@@ -75,6 +67,14 @@ public class BucketApprovalDto {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Long getUserLeaveRequest() {

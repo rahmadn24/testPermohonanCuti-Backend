@@ -43,7 +43,7 @@ public class UserLeaveRequest implements Serializable {
     @LastModifiedDate
     private Date updateDate;
 
-    @Column(name = "last_update_by")
+    @Column(name = "update_by")
     private String updateBy;
 
     @ManyToOne(fetch = FetchType.LAZY)
