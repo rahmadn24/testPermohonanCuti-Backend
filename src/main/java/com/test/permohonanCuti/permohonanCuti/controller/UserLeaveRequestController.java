@@ -1,6 +1,5 @@
 package com.test.permohonanCuti.permohonanCuti.controller;
 
-import com.test.permohonanCuti.permohonanCuti.dto.BucketApprovalDto;
 import com.test.permohonanCuti.permohonanCuti.dto.UserLeaveRequestDto;
 import com.test.permohonanCuti.permohonanCuti.dto.UserLeaveView;
 import com.test.permohonanCuti.permohonanCuti.model.*;
@@ -9,19 +8,19 @@ import com.test.permohonanCuti.permohonanCuti.services.PositionLeaveServices;
 import com.test.permohonanCuti.permohonanCuti.services.UserLeaveRequestService;
 import com.test.permohonanCuti.permohonanCuti.services.UserServices;
 import com.test.permohonanCuti.permohonanCuti.utils.Constant;
+import org.hibernate.SharedSessionContract;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
+import javax.persistence.TypedQuery;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -103,23 +102,24 @@ public class UserLeaveRequestController {
         List<Object> jsonObjectList = new ArrayList<>();
         try {
 //            User user = userServices.getDataById(userId);
-            List<UserLeaveRequest> userList = userLeaveRequestService.getDataAllByUserId(userId, pageRequest);
+            List<UserLeaveView> userList = userLeaveRequestService.getDataAllByUserId(userId, pageRequest);
+            List list = modelMapper.map(userList, (Type) UserLeaveView.class);
 //            Object obj2 = userList.get(0);
 //            ArrayList al1 = new ArrayList();
 //            al1 = (ArrayList) obj2;
 //            UserLeaveView userLeaveView = modelMapper.map(userList, UserLeaveView.class);
-            System.out.println(userList);
+//            System.out.println(userList);
 //            System.out.println(userLeaveView);
-//            for (UserLeaveRequest dc : userList) {
-//                HashMap<String, Object> data1 = new HashMap<>();
-//                System.out.println(dc.getLeaveDateFrom());
+            for (UserLeaveView dc : userList) {
+                HashMap<String, Object> data1 = new HashMap<>();
+//                System.out.println("ini db"+dc.getLeaveDateFrom());
 //                data1.put("userId", dc.getLeaveDateFrom());
 //                data1.put("leaveDateFrom", dc.);
 //                data1.put("leaveDateTo", dc.);
 //                data1.put("description", dc.);
 //                data1.put("status", dc.);
 //                jsonObjectList.add(data1);
-//            }
+            }
             data.put(Constant.CONST_DATA, userList);
             data.put(Constant.CONST_STATUS, HttpStatus.OK);
         } catch (Exception e) {

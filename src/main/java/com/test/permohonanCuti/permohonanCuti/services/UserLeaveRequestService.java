@@ -1,12 +1,9 @@
 package com.test.permohonanCuti.permohonanCuti.services;
 
 import com.test.permohonanCuti.permohonanCuti.dto.UserLeaveView;
-import com.test.permohonanCuti.permohonanCuti.model.BucketApproval;
-import com.test.permohonanCuti.permohonanCuti.model.User;
 import com.test.permohonanCuti.permohonanCuti.model.UserLeaveRequest;
 import com.test.permohonanCuti.permohonanCuti.repository.UserLeaveRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +24,7 @@ public class UserLeaveRequestService {
         return userLeaveRequestRepository.findAll();
     }
 
-    public List<UserLeaveRequest> getDataAllByUserId(Long user, Pageable pageable) {
+    public List<UserLeaveView> getDataAllByUserId(Long user, Pageable pageable) {
         System.out.println(user);
         System.out.println(pageable);
         return userLeaveRequestRepository.findByByUsers(user, pageable);
